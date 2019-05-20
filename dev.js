@@ -1,17 +1,9 @@
 const WebpackDevServer = require("webpack-dev-server");
-// const DashboardPlugin = require('webpack-dashboard/plugin');
 const webpack = require("webpack");
-const config = require("./webpack/webpack.web.beta.config.js");
+const open = require("open");
+const config = require("./webpack.config.js");
 const port =  config.devServer.port;
 const host = config.devServer.host;
-const ip = '0.0.0.0';
-
-for (let key in config.entry) {
-    let ar = config.entry[key];
-    if (key != "common") {
-        ar.unshift("webpack-dev-server/client?http://"+ host +":"+ port +"/", "webpack/hot/dev-server");
-    }
-}
 
 //开发环境热更新配置
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -27,15 +19,5 @@ server.listen(port, host, (err)=>{
 	}else{
 		console.log('静态资源监听服务webpack-dev-server启动成功！访问地址：http://' + host + ':' + port + " 编译进行中～～～");
 	}
-});
-
-
-
-
-
-
-
-
-
-
-
+	open('http://' + host + ':' + port + '/entry#/');
+})
