@@ -58,17 +58,17 @@ module.exports = {
     plugins: [
         // new webpack.BannerPlugin('晨曦沐枫作品，欢迎学习交流'), //打包后代码版权申明插件
         new CleanPlugin(), //每次打包清理上次的打包文件
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     // manifest文件用来引导所有模块的交互。manifest文件包含了加载和处理模块的逻辑。
-        //     // 当webpack编译器处理和映射应用代码时，它把模块的详细的信息都记录到了manifest文件中。当模块被打包并运输到浏览器上时，
-        //     // runtime就会根据manifest文件来处理和加载模块。利用manifest就知道从哪里去获取模块代码。
-        //     names: ["common", "manifest"],
-        //     //filename: "js/[name]-[chunkhash:8].js",
-        //     minChunks: Infinity //当项目中引用次数超过2次的包自动打入commons.js中,可自行根据需要进行调整优化
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            // manifest文件用来引导所有模块的交互。manifest文件包含了加载和处理模块的逻辑。
+            // 当webpack编译器处理和映射应用代码时，它把模块的详细的信息都记录到了manifest文件中。当模块被打包并运输到浏览器上时，
+            // runtime就会根据manifest文件来处理和加载模块。利用manifest就知道从哪里去获取模块代码。
+            names: ["common", "manifest"],
+            //filename: "js/[name]-[chunkhash:8].js",
+            minChunks: Infinity //当项目中引用次数超过2次的包自动打入commons.js中,可自行根据需要进行调整优化
+        }),
         new ExtractTextPlugin('style.css'),
         new HtmlWebpackPlugin({
-            template: './src/html/index.html',
+            template: './src/template/index.html',
             filename: 'index.html', //可以使用hash命名
             title: '前端栈',
             inject: 'body', //脚本包含到body 也可以写到head里面

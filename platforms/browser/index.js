@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Switch, Route, IndexRoute }  from 'react-router';
-import Header from '../components/header/header.jsx';
-import Home from '../components/home/home.jsx';
-import Detail from '../components/detail/detail.jsx';
-import Life from '../components/life/life.jsx';
-import Author from '../components/author/author.jsx';
-import store from '../lib/configureStore';
+import Header from '../../src/components/header/header.jsx';
+import Home from '../../src/components/home/home.jsx';
+import Detail from '../../src/components/detail/detail.jsx';
+import Life from '../../src/components/life/life.jsx';
+import Author from '../../src/components/author/author.jsx';
+import store from '../../src/lib/configureStore';
 const createHistory = require('history').createHashHistory;
-import '../style/base.less';
+import '../../src/style/base.less';
 
 const history = createHistory();
 
